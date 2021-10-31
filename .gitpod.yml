@@ -4,6 +4,12 @@ image: gitpod/workspace-mysql
 tasks:
   - init: |
       npm install
+      jq '
+      .bot.token=env.DISCORD_TEST_TOKEN | 
+      .dbg_api.service_id="example" | 
+      .maria_db={host:"localhost", user:"root", "password": "", database:"vanus_enlightenment", port: 3306} |
+      .autostart[0].enabled = false
+       ' json/config.json > json/config.json
     command: |
       npm run start
 
