@@ -11,6 +11,9 @@ tasks:
       .autostart[0].enabled = false
       ' json/config.json > json/gitpod_config.json;
       mv json/gitpod_config.json json/config.json;
+      
+      npm run create_db;
+      
     command: |
       npm run start
 
